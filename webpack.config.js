@@ -1,20 +1,19 @@
 module.exports = {
-    entry: "index.js",
+    entry: "./src/app.js",
     output: {
-        path: __dirname,
+        path: __dirname+"/public",
         filename: "bundle.js"
     },
+    devServer: {
+        contentBase: __dirname+"/public"
+    },
     module: {
-        rule: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_module/,
                 use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ['@babel/preset-env'],
-                        plugins: ['@babel/plugin-transform-runtime']
-                      }
+                    loader: "babel-loader"
                 }
             }
         ]
